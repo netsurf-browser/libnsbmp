@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
         FILE *outf = stdout;
 
         if (argc < 2) {
-                fprintf(stderr, "Usage: %s image.bmp [out]\n", argv[0]);
+                fprintf(stderr, "Usage: %s <bmp> [out]\n", argv[0]);
                 return 1;
         }
 
