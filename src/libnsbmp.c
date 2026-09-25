@@ -982,8 +982,9 @@ bmp_decode_rle8(bmp_image *bmp, uint8_t *data, int bytes)
                                 }
 
                                 /* Ensure that there is sufficient input data
-                                 * to advance to the next command (if any) */
-                                if (data + length > end)
+                                 * (including trailing padding) to advance to
+                                 * the next command (if any) */
+                                if (data + ((length + 1) & ~1) > end)
                                         return BMP_INSUFFICIENT_DATA;
 
                                 data += length;
@@ -1154,8 +1155,9 @@ bmp_decode_rle4(bmp_image *bmp, uint8_t *data, int bytes)
                                 length = (length + 1) / 2;
 
                                 /* Ensure that there is sufficient input data
-                                 * to advance to the next command (if any) */
-                                if (data + length > end)
+                                 * (including trailing padding) to advance to
+                                 * the next command (if any) */
+                                if (data + ((length + 1) & ~1) > end)
                                         return BMP_INSUFFICIENT_DATA;
 
                                 data += length;
