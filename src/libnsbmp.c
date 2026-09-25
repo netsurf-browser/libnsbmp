@@ -852,7 +852,7 @@ static bmp_result bmp_decode_mask(bmp_image *bmp, uint8_t *data, int bytes)
         addr = ((intptr_t)data) & 3;
 
         for (y = 0; y < bmp->height; y++) {
-                if ((data + (bmp->width >> 3)) > end)
+                if ((data + ((bmp->width + 7) / 8)) > end)
                         return BMP_INSUFFICIENT_DATA;
                 scanline = (void *)(bottom - (y * swidth));
                 for (x = 0; x < bmp->width; x++) {
